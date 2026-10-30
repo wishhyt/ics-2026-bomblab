@@ -85,9 +85,23 @@ f2 = f1 ^ (kfold + f0 + 0x8a78 + (cfold>>3))
 
 ## 验证记录
 
-`make test` 的公开测试结果为正式关卡 `60/60`、Honor `10/10`。另外使用公开列表以外的 seed `43`、`2027`、`314159265` 分别运行完整七行输入，三次均显示六个 `Phase N defused.` 和 `Secret phase defused.`。seed 43 时，第 1 关 challenge 为 `0x9cde98852e60034b`，第 6 关 challenge 为 `0x523fb4dd5d162e88`。为检查分支覆盖，还以固定随机数生成器产生 256 个额外 seed，全部通过完整炸弹及 Honor（`256/256`）。
+`make test` 的公开测试结果为正式关卡 `60/60`、Honor `10/10`。`tests/public.json` 的公开 seed 为 `0, 1, 7, 42, 99, 123, 2026, 65535, 987654321, 18446744073709551615`，以下记录使用列表之外的 seed `43`。先运行 `./defuser --seed 43` 生成前六行，再运行 `./defuser --secret --seed 43` 生成第七行，合并后输入 `./bomb --seed 43`。一次完整运行得到：
+
+| 关卡 | challenge | 输入行 | 炸弹输出 |
+| --- | --- | --- | --- |
+| 1 | `0x9cde98852e60034b` | `93114130` | `Phase 1 defused.` |
+| 2 | `0x6ec624aa85685867` | `17 69 339 1668 8323 41631` | `Phase 2 defused.` |
+| 3 | `0xd49ffe504bfdab7f` | `7 1288735558` | `Phase 3 defused.` |
+| 4 | `0x006ff81b72d591ff` | `402830526` | `Phase 4 defused.` |
+| 5 | `0x18e47d0995aecbfe` | `333138733 2588` | `Phase 5 defused.` |
+| 6 | `0x523fb4dd5d162e88` | `3359492882` | `Phase 6 defused.` |
+| Honor | seed `43` 生成 | `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOPEN0 2952151212 3352549582` | `Secret phase defused.` |
+
+另用非公开 seed `2027`、`314159265` 完整运行，两次均显示六个 `Phase N defused.` 和 `Secret phase defused.`。为检查分支覆盖，还以固定随机数生成器产生 256 个额外 seed，全部通过完整炸弹及 Honor（`256/256`）。
 
 运行结果截图：
+
+![非公开 seed 43 的完整运行输出](images/seed43-run.jpg)
 
 ![六关及 Honor 的 GitHub Actions 公开测试通过截图](images/public-tests.jpg)
 
