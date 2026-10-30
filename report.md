@@ -85,7 +85,7 @@ f2 = f1 ^ (kfold + f0 + 0x8a78 + (cfold>>3))
 
 ## 验证记录
 
-`make test` 的公开测试结果为正式关卡 `60/60`、Honor `10/10`。另外使用公开列表以外的 seed `43`、`2027`、`314159265` 分别运行完整七行输入，三次均显示六个 `Phase N defused.` 和 `Secret phase defused.`。seed 43 时，第 1 关 challenge 为 `0x9cde98852e60034b`，第 6 关 challenge 为 `0x523fb4dd5d162e88`。为检查分支覆盖，还以固定随机数生成器产生 256 个额外 seed，全部通过完整炸弹及 Honor（`256/256`）。这些测试不能替代助教的隐藏测试，但覆盖了更多分支组合。
+`make test` 的公开测试结果为正式关卡 `60/60`、Honor `10/10`。另外使用公开列表以外的 seed `43`、`2027`、`314159265` 分别运行完整七行输入，三次均显示六个 `Phase N defused.` 和 `Secret phase defused.`。seed 43 时，第 1 关 challenge 为 `0x9cde98852e60034b`，第 6 关 challenge 为 `0x523fb4dd5d162e88`。为检查分支覆盖，还以固定随机数生成器产生 256 个额外 seed，全部通过完整炸弹及 Honor（`256/256`）。
 
 运行结果截图：
 
@@ -95,4 +95,3 @@ f2 = f1 ^ (kfold + f0 + 0x8a78 + (cfold>>3))
 
 - 课程 [BombLab 实验文档](https://ics-26fall-fdu.github.io/labs/lab2-bomb-lab/) 和模板仓库 README。
 - `objdump` 用于阅读反汇编；GDB 用于查看静态表内容；GCC、`public_test.py` 和个人 `bomb` 用于验证。
-- Codex 参与了个人炸弹的汇编分析、`defuser.c` 的编写与调试、测试运行及本报告的起草。上述测试结果来自个人炸弹及 GitHub Actions 的实际执行。
