@@ -89,12 +89,10 @@ f2 = f1 ^ (kfold + f0 + 0x8a78 + (cfold>>3))
 
 运行结果截图：
 
-![完整运行结果](images/full-run.png)
-
-![公开测试结果](images/public-tests.png)
+![六关及 Honor 的 GitHub Actions 公开测试通过截图](images/public-tests.jpg)
 
 ## 资料与辅助工具
 
 - 课程 [BombLab 实验文档](https://ics-26fall-fdu.github.io/labs/lab2-bomb-lab/) 和模板仓库 README。
 - `objdump` 用于阅读反汇编；GDB 用于查看静态表内容；GCC、`public_test.py` 和个人 `bomb` 用于验证。
-- Codex 用于协助梳理汇编数据流、检查 C 的运算宽度并整理报告。上述测试结果来自个人炸弹的实际执行。
+- Codex 参与了个人炸弹的汇编分析、`defuser.c` 的编写与调试、测试运行及本报告的起草。上述测试结果来自个人炸弹及 GitHub Actions 的实际执行。
